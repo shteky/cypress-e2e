@@ -23,21 +23,6 @@ cypress-e2e/
 └── package.json
 ```
 
-## Architecture
-
-### Page Object Model
-
-Selectors and page-level actions live in `cypress/pages/DemoQA/`. Each page class exposes **selectors** (CSS locators) and **action methods** (e.g. `homePage.openElements()`, `bookStorePage.login()`).
-
-### Custom Commands
-
-| Category | Examples |
-|----------|----------|
-| Actions | `cy.clickElement()`, `cy.typeInElement()`, `cy.clearElement()` |
-| Assertions | `cy.assertElementVisible()`, `cy.assertContainsText()`, `cy.assertElementText()` |
-| App-specific | `cy.bookStoreLogin(username, password)` |
-
-Command types are declared in `cypress/support/index.d.ts`.
 
 ## Prerequisites
 
