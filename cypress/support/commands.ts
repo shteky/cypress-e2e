@@ -1,7 +1,5 @@
 import './commands/actions';
 import './commands/assertions';
-import { bookStorePage } from '../pages/DemoQA/BookStorePage';
-
-Cypress.Commands.add('bookStoreLogin', (username: string, password: string) => {
-  bookStorePage.login(username, password);
-});
+import './commands/demoQA/homePage';
+import './commands/demoQA/bookStorePage';
+import './commands/demoQA/elementsPage';

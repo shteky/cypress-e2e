@@ -50,6 +50,33 @@ declare namespace Cypress {
     assertElementEmpty(selector: string): Chainable<JQuery<HTMLElement>>;
     assertElementNotEmpty(selector: string): Chainable<JQuery<HTMLElement>>;
 
+    visitHomePage(): Chainable<void>;
+    openElementsPage(): Chainable<JQuery<HTMLElement>>;
+    openBookStoreApp(): Chainable<JQuery<HTMLElement>>;
+    assertHomepageCategoryCards(): Chainable<void>;
+    assertHomepageCategoryLabels(): Chainable<void>;
+    assertElementsCategoryCardVisible(): Chainable<JQuery<HTMLElement>>;
+
     bookStoreLogin(username: string, password: string): Chainable<void>;
+    openBookStore(): Chainable<JQuery<HTMLElement>>;
+    bookStoreLogout(): Chainable<JQuery<HTMLElement>>;
+    assertBookStoreLogoutVisible(): Chainable<JQuery<HTMLElement>>;
+    assertBookStoreLoginVisible(): Chainable<JQuery<HTMLElement>>;
+    assertBookStoreListingVisible(): Chainable<JQuery<HTMLElement>>;
+    assertBookListingCount(count: number): Chainable<JQuery<HTMLElement>>;
+    searchBookInStore(title: string): Chainable<void>;
+    ensureBookStoreLoggedIn(username: string, password: string): Chainable<void>;
+
+    openTextBoxPage(): Chainable<JQuery<HTMLElement>>;
+    assertElementsTextBoxMenuLabel(): Chainable<JQuery<HTMLElement>>;
+    openElementsSidebarMenus(): Chainable<void>;
+    fillTextBoxForm(
+      name: string,
+      email: string,
+      currentAddress: string,
+      permanentAddress: string
+    ): Chainable<void>;
+    submitTextBoxForm(): Chainable<JQuery<HTMLElement>>;
+    assertTextBoxOutputContains(text: string): Chainable<JQuery<HTMLElement>>;
   }
 }
