@@ -14,10 +14,6 @@ cypress-e2e/
 │   │   │   └── Sanity/    # Homepage & Elements smoke tests (*.spec.ts)
 │   │   └── Project 2/     # Scaffold for a second test suite (API, E2E, Sanity)
 │   ├── fixtures/          # Test data (e.g. example.json)
-│   ├── pages/
-│   │   ├── DemoQA/        # Page Object classes (selectors & page data)
-│   │   └── Project 2/     # Page objects for Project 2
-│   ├── screenshots/       # Failure screenshots (generated on run)
 │   └── support/
 │       ├── commands/
 │       │   ├── actions.ts       # Reusable interaction commands
