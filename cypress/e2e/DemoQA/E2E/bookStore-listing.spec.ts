@@ -1,11 +1,8 @@
-import { homePage } from '../../../pages/DemoQA/HomePage';
-import { bookStorePage } from '../../../pages/DemoQA/BookStorePage';
-
 beforeEach(() => {
-  homePage.visit();
-  homePage.openBookStoreApp();
+  cy.visitHomePage();
+  cy.openBookStoreApp();
   cy.bookStoreLogin('test1', 'P@ssw0rd-1');
-  bookStorePage.openStore();
+  cy.openBookStore();
 });
 
 const books = [
@@ -19,16 +16,14 @@ const books = [
 
 describe('Books listing page', () => {
   it('Books listings', () => {
-    cy.assertElementVisible(bookStorePage.selectors.store.listing);
-    cy.get(bookStorePage.selectors.store.listing).children().should('have.length', 8);
+    cy.assertBookStoreListingVisible();
+    cy.assertBookListingCount(8);
   });
 
   it('Search for book', () => {
     context('', () => {
       for (let index = 0; index < books.length; index++) {
-        cy.typeInElement(bookStorePage.selectors.store.searchBox, books[index]);
-        cy.assertElementText(bookStorePage.selectors.store.bookTitle, books[index]);
-        cy.clearElement(bookStorePage.selectors.store.searchBox);
+        cy.searchBookInStore(books[index]);
       }
     });
   });

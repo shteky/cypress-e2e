@@ -1,37 +1,26 @@
-import { homePage } from '../../../pages/DemoQA/HomePage';
-import { elementsPage } from '../../../pages/DemoQA/ElementsPage';
-
 beforeEach(() => {
-  homePage.visit();
+  cy.visitHomePage();
 });
 
 describe('DemoQA - Elements', () => {
   it('DemoQA - Elements page', () => {
-    cy.assertElementVisible(homePage.selectors.elements);
-    homePage.openElements();
+    cy.assertElementsCategoryCardVisible();
+    cy.openElementsPage();
     cy.url().should('contain', 'elements');
-    cy.assertContainsText(elementsPage.selectors.menu.textbox, 'Text Box');
-
-    cy.clickElement(elementsPage.selectors.menu.textbox);
-    cy.clickElement(elementsPage.selectors.menu.checkbox);
-    cy.clickElement(elementsPage.selectors.menu.links);
+    cy.assertElementsTextBoxMenuLabel();
+    cy.openElementsSidebarMenus();
   });
 
   it('DemoQA - Text box output result', () => {
-    homePage.openElements();
-
-    elementsPage.openTextBox();
-    cy.typeInElement(elementsPage.selectors.textboxMenu.name, 'John Doe');
-    cy.typeInElement(elementsPage.selectors.textboxMenu.email, 'john.Doe@test.net');
-    cy.typeInElement(
-      elementsPage.selectors.textboxMenu.currentAddress,
-      'Bulgaria, Sofia city, Lyulin 10 district'
-    );
-    cy.typeInElement(
-      elementsPage.selectors.textboxMenu.permanentAddress,
+    cy.openElementsPage();
+    cy.openTextBoxPage();
+    cy.fillTextBoxForm(
+      'John Doe',
+      'john.Doe@test.net',
+      'Bulgaria, Sofia city, Lyulin 10 district',
       'Bulgaria, Stara Zagora city, Zheleznik district'
     );
-    cy.clickElement(elementsPage.selectors.textboxMenu.submitBtn);
-    cy.assertContainsText(elementsPage.selectors.textboxMenu.output, 'john.Doe@test.net');
+    cy.submitTextBoxForm();
+    cy.assertTextBoxOutputContains('john.Doe@test.net');
   });
 });
